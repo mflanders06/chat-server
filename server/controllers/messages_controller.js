@@ -12,7 +12,21 @@ module.exports = {
         messages.push(newMessage);
         res.status(200).send(messages);
         id++;
-        console.log(id);
+    },
+
+    update: (req, res) => {
+        const { id } = req.params;
+        const { text } = req.body;
+        const index = messages.findIndex( (value) => value.id === parseInt(id) );
+        messages[index].text = text;
+        res.status(200).send(messages);
+    },
+
+    delete: (req, res) => {
+        const { id } = req.params;
+        const index = messages.findIndex( (value) => value.id === parseInt(id) );
+        messages.splice(index, 1);
+        res.status(200).send(messages);
     }
 
 }
