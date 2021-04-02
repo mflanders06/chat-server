@@ -1,5 +1,5 @@
 const messages = [];
-const id = 0;
+let id = 0;
 
 module.exports = {
     read: (req, res) => {
@@ -12,6 +12,7 @@ module.exports = {
         messages.push(newMessage);
         res.status(200).send(messages);
         id++;
+        console.log(id);
     }
 
 }
